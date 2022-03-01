@@ -4,7 +4,7 @@ const overviewController = res => {
   const html = `
     <h1>Overview</h1>
     <br/>
-    <p>This project is using an nginx server as reverse proxy for a node application</p>
+    <p>This project is using an nginx server as reverse proxy for a node application with mysql and dockerize</p>
   `;
   return res.end(html);
 }
