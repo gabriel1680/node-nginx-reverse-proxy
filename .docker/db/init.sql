@@ -1,0 +1,4 @@
+USE nodedb;
+CREATE USER 'test'@'%' IDENTIFIED BY 'some_pass';
+GRANT ALL PRIVILEGES ON *.* TO 'test'@'%' WITH GRANT OPTION;
+CREATE TABLE people (id int AUTO_INCREMENT NOT NULL, name varchar(255) NOT NULL, PRIMARY KEY (id));
