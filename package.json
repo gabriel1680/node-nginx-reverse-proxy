@@ -1,0 +1,23 @@
+{
+  "name": "node-nginx-reverse-proxy",
+  "version": "1.0.0",
+  "description": "Um projeto simples de aplicação do conceito de proxy reverso utilizando uma api node e um  webserver nginx. Aplicação em containers com docker-compose",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabriel1680/node-nginx-reverse-proxy.git"
+  },
+  "author": "Gabrel P. Lopes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gabriel1680/node-nginx-reverse-proxy/issues"
+  },
+  "homepage": "https://github.com/gabriel1680/node-nginx-reverse-proxy#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3"
+  }
+}
