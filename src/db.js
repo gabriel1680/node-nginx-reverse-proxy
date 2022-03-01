@@ -11,7 +11,7 @@ const connection = mysql.createConnection(dbConfig);
 
 function getRandomName() {
   const names = ["Gabriel", "Guilherme", "Julia", "Caio", "Nina", "Cebolinha"];
-  const randomInt0To5 = Math.floor(Math.random() * 5);
+  const randomInt0To5 = Math.floor(Math.random() * 6);
   return names[randomInt0To5];
 }
 
