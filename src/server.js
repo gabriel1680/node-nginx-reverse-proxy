@@ -1,16 +1,16 @@
-const http = require("http");
-const { notFound, serverError } = require("./core/http");
-const { routes } = require("./core/routes");
 
-const server = http.createServer((req, res) => {
-  try {
-    const controller = routes[req.url];
-    if (typeof controller !== "function") return notFound(res);
-    return controller(res);
-  } catch (error) {
-    console.error(error);
-    return serverError(res);
-  }
-});
+const express = require("express");
+
+const { indexController, overviewController } = require("./core/controllers");
+const { notFound, serverError } = require("./core/http");
+
+const server = express();
+
+server.get("/", async (req, res) => await indexController(res));
+server.get("/overview", async (req, res) => await overviewController(res));
+
+server.use(notFound);
+
+server.use(serverError);
 
 server.listen(3000, () => console.log("Server up and running"));
