@@ -5,20 +5,38 @@ services:
     build: .
     image: app-node
     container_name: app-node
+    command: sh -c "dockerize -wait tcp://db:3306 -timeout 60s -wait-retry-interval 5s node server.js"
     ports:
       - 3000
     networks:
       - nodenet
-  
+    depends_on:
+      - db
+
   webserver:
     build: 
-      context: ./nginx
+      context: ./.docker/nginx
       dockerfile: Dockerfile
     container_name: webserver
     ports:
       - "8080:80"
     depends_on:
       - app-node
+    networks:
+      - nodenet
+
+  db:
+    image: mysql/mysql-server:latest-aarch64
+    container_name: mysql-databse
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_DATABASE=nodedb
+    volumes:
+      - "./.docker/db/init.sql:/docker-entrypoint-initdb.d/init.sql"
+    ports:
+      - 3306
     networks:
       - nodenet
 
