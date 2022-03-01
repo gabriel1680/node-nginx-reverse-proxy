@@ -9,8 +9,14 @@ const dbConfig = {
 
 const connection = mysql.createConnection(dbConfig);
 
+function getRandomName() {
+  const names = ["Gabriel", "Guilherme", "Julia", "Caio", "Nina", "Cebolinha"];
+  const randomInt0To5 = Math.floor(Math.random() * 5);
+  return names[randomInt0To5];
+}
+
 function insertPerson() {
-  const query = "INSERT INTO people (name) VALUES ('Gabriel')";
+  const query = `INSERT INTO people (name) VALUES ('${getRandomName()}')`;
   return new Promise(resolve => connection.query(query, (err, result) => {
     if (err) return reject(err);
     return resolve();
