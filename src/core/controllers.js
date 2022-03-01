@@ -1,6 +1,7 @@
-const { insertPerson, listPeople } = require("../db");
 const fs = require("fs");
 const path = require("path");
+
+const { insertPerson, listPeople } = require("../db");
 
 function readHtml(fileName) {
   const viewsDir = path.join(__dirname, "..", "views");
