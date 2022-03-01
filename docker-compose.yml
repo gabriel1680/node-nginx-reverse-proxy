@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    image: app-node
+    container_name: app-node
+    ports:
+      - 3000
+    networks:
+      - nodenet
+  
+  webserver:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: webserver
+    ports:
+      - "8080:80"
+    depends_on:
+      - app-node
+    networks:
+      - nodenet
+
+networks:
+  nodenet:
+    driver: bridge
