@@ -7,7 +7,7 @@ const { notFound, serverError } = require("./core/http");
 const server = express();
 
 server.get("/", async (req, res) => await indexController(res));
-server.get("/overview", async (req, res) => await overviewController(res));
+server.get("/overview", (req, res) => overviewController(res));
 
 server.use(notFound);
 
